@@ -4,8 +4,8 @@ Proyecto de gestión de sistema de stream de series programado en Python para la
 
 ## Índice de contenidos
 
-* [Integrantes](#integrantes)
-* [Estructura del proyecto](#estructura-del-proyecto)
+1. [Integrantes](#integrantes)
+2. [Estructura del proyecto](#estructura-del-proyecto)
 
 ## Integrantes
 
@@ -17,4 +17,6 @@ Los participantes en el proyecto son:
 
 ## Estructura del proyecto
 
+(Diagrama de clases y tal)
 
+(Desplegable de clases)
