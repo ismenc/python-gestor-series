@@ -1,0 +1,6 @@
+{
+  "venv": "", 
+  "name": "python-stream-series", 
+  "license": "GNU General Public License v3", 
+  "description": "Proyecto de stream de series en Python"
+}
