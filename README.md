@@ -38,6 +38,6 @@ Los participantes en el proyecto son:
 
 ## Estructura del proyecto
 
-<img src="./doc/diagrama_clases.png" alt="">
+<img src="doc/diagrama-clases.png" alt="">
 
 (Desplegable de clases)
