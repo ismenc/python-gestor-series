@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from formatter import NullFormatter
+from Util import Util
 
 archivo = open("Usuarios.txt", "a+")
 
@@ -8,10 +8,4 @@ password = raw_input("Introduce tu contraseña: ")
 
 datos_usuario = nombre_usuario+ ", "+password
 
-linea = archivo.readline()
-while linea != "fin":
-    print linea
-    linea = archivo.readline()
-    #usar metodo linea.find() para encontrar la posicion de la , y partir la cadena
-
-#archivo.write("\n"+datos_usuario)
+Util.tratarUsuario(archivo, datos_usuario)
