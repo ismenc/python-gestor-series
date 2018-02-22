@@ -1,8 +1,13 @@
 # -*- coding: utf-8 -*-
 
 '''
+<<<<<<< .merge_file_a02208
 Created on 16 feb. 2018
 
+=======
+	Modelo de película
+Created on 16 feb. 2018
+>>>>>>> .merge_file_a03008
 @author: Ismael
 '''
 
@@ -29,6 +34,9 @@ class Pelicula(object):
         
     
     def toString(self):
-        cadena = "Titulo: "+ self.titulo+ "\nEstreno en: "+ str(self.fechaEstreno)+ "\nGenero: "+ self.genero+ "\nDirector: "+ self.director+ "\nDuracion: "+ str(self.duracion)
+        cadena = "Película: "+ self.titulo+ "\nEstreno en: "+ str(self.fechaEstreno)+ "\nGenero: "+ self.genero+ "\nDirector: "+ self.director+ "\nDuracion: "+ str(self.duracion)
         return cadena
         
+    
+    #Funcion que guarde pelicula en fichero
+>>>>>>> .merge_file_a03008
