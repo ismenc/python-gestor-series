@@ -24,6 +24,7 @@ class Util():
                 linea = archivo.readline()
 
         if usuario_encontrado == False:
+            '''Tendría que llamar a otro metodo que pida el resto de datos del usuario y lo registre'''
             print ("Usuario registrado correctamente")
             archivo.write("\n" + datos_usuario)
 
@@ -32,5 +33,5 @@ class Util():
     def cargarCatalogo(rutaCatalogo):
         archivo = open(rutaCatalogo, "r")
         for linea in archivo.readLines():
-    
     '''
+    
