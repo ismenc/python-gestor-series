@@ -40,6 +40,7 @@ def tratar_menu():
 			
 		elif opcion == 2:
 			print ("PROXIMAMENTE. Ver una serie.")
+			U
 		
 		elif opcion == 3:
 			print ("PROXIMAMENTE. Ver una pelicula.")
