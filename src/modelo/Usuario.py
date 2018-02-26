@@ -31,4 +31,3 @@ class Usuario:
     def verPendientes(self):
         print ("Las películas y series que ", self.nombre, " tiene pendientes son: " + ", ".join(self.pendienteVer))
 
-    #Funcion que guarde pelicula en fichero
