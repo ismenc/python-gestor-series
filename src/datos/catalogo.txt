@@ -1,2 +1,4 @@
-
-# Pelis y series juntas o separadas?
+P, Star Wars, 2016, Cifi, George Lucas, 136
+S, Game of Thrones, 2011, Cifi, George R. R. Martin, 55, 10, 10, 10, 10, 10, 10, 7
+S, Stranger Things, 2017, Cifi, yo, 45, 10, 9
+P, Black Panther, 2018, Cifi, Marvel, 137

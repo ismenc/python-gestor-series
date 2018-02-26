@@ -2,7 +2,7 @@
 
 '''
     Clase auxiliar que provee a nuestra aplicación de las funciones necesarias.
-    
+
 Created on 16 feb. 2018
 @author: Diego
 '''
@@ -28,10 +28,27 @@ class Util():
             print ("Usuario registrado correctamente")
             archivo.write("\n" + datos_usuario)
 
-    '''
+
     @staticmethod
-    def cargarCatalogo(rutaCatalogo):
-        archivo = open(rutaCatalogo, "r")
-        for linea in archivo.readLines():
     '''
-    
+    muestra las peliculas y crea los objetos pelicual y serie
+    hay que crearlos, ya se estan sacando los datos uno por uno
+    '''
+    def cargarCatalogo():
+        archivo = open("datos/catalogo.txt", "r")
+
+        linea = archivo.readline()
+
+        while linea != "":
+            print linea
+            pos1 = 0
+            pos2 = linea.find(",")
+            while pos2 != -1:
+                tipo = linea[pos1: pos2].lstrip(" ")
+                print tipo
+                pos1 = pos2
+                pos2 = linea.find(",", pos1+1)
+                print pos2
+
+            linea = archivo.readline()
+
