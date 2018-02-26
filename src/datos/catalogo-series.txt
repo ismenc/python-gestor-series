@@ -1,0 +1,4 @@
+Game of Thrones,2011,Cifi,George R. R. Martin
+55,10,10,10,10,10,10,7
+Stranger Things,2017,Cifi,yo
+45,10,9

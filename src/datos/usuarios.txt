@@ -1,1 +1,3 @@
-test, pass
+diego, diego123
+davinia, davinia123
+usuario, usuario

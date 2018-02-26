@@ -1,14 +1,9 @@
 # -*- coding: utf-8 -*-
 
 '''
-<<<<<<< .merge_file_a02208
-Created on 16 feb. 2018
-
-=======
 	Modelo de película
-Created on 16 feb. 2018
->>>>>>> .merge_file_a03008
-@author: Ismael
+	Created on 16 feb. 2018
+	@author: Ismael
 '''
 
 class Pelicula(object):
@@ -20,7 +15,7 @@ class Pelicula(object):
     genero = ""
     director = ""
     duracion = 0
-    
+
 
     def __init__(self, titulo, estreno, genero, director, duracion):
         '''
@@ -31,12 +26,16 @@ class Pelicula(object):
         self.genero = genero
         self.director = director
         self.duracion = duracion
-        
-    
+
+
     def toString(self):
         cadena = "Película: "+ self.titulo+ "\nEstreno en: "+ str(self.fechaEstreno)+ "\nGenero: "+ self.genero+ "\nDirector: "+ self.director+ "\nDuracion: "+ str(self.duracion)
         return cadena
-        
-    
+
+
     #Funcion que guarde pelicula en fichero
->>>>>>> .merge_file_a03008
+
+    def guardarPelicula(self):
+        archivo = open("../datos/catalogoPeliculas.txt", "w")
+        cadena = self.titutulo, ",", str(self.fechaEstreno), ",", self.generero, ",", self.direrector, ",", str(self.duraracion)
+        archivo.append(cadena)
