@@ -57,4 +57,58 @@ Los participantes en el proyecto son:
 
 <img src="doc/diagrama-clases.png" alt="">
 
-(Desplegable de clases)
+## Desplegable de clases
+<br>
+
+<details>
+     <summary>Película</summary>
+ <p>
+	 
+Clase que define la estructura de datos de las películas; así como su título, género, director, duración y fecha de estreno.
+
+ </p>
+ </details><br> 
+
+<details>
+     <summary>Serie</summary>
+ <p>
+	 
+Clase que define la estructura de datos de las series; así como su título, género, fecha de estreno, duración media de los capítulos y número de temporadas hasta la fecha.
+
+ </p>
+ </details><br> 
+ 
+ <details>
+     <summary>Usuario</summary>
+ <p>
+	 
+Clase que almacena los datos del usuario; así como su nombre, clave, edad y dos arrays para guardar tanto las series o películas vistas como las marcadas en pendientes de ver. Tambien dispone de unos métodos para añadir dichas series o películas a sendos arrays o visualizar el contenido de estos.
+Se han realizado controles para evitar introducir más de una vez, la misma serie o película, en los metodos para añadir a visto o marcar como pendiente.
+
+ </p>
+ </details><br> 
+ 
+ <details>
+     <summary>_init_</summary>
+ <p>
+	 
+Principal donde ejecutamos todas las acciones.
+
+ </p>
+ </details><br> 
+ 
+ <details>
+     <summary>Util</summary>
+ <p>
+	 
+Clase que provee a la principal de los métodos estáticos para interactuar con el usuario y gestionar los objetos.
+* loguear(user, password) - nos permite logearnos si el usuario está en la base de datos o lo registra si no está
+* mostrar_menu() - muestra el menú con las opciones por pantalla
+* tratar_menu() - función que resuelve toda la casuística correspondiente a la opción elegida por el usuario
+* leerEntero() - solicita un número entero que sea validado
+* cargarCatalogoPeliculas() - carga las películas en el fichero X en memoria
+* cargarCatalogoSeries() - carga las series en el fichero X en memoria
+* mostrarLista(msg, lista) - muestra por pantalla el mensaje y a continuación la lista de películas o series que le pasemos
+
+ </p>
+ </details>
