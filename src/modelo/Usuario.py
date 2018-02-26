@@ -26,9 +26,9 @@ class Usuario:
             print("Ya se encuentra en la lista.")
 
     def verVisto(self):
-        print ("Las peliculas y series que ", self.nombre, " ha visto son: " + ", ".join(self.visto))
+        print ("Las películas y series que ", self.nombre, " ha visto son: " + ", ".join(self.visto))
 
     def verPendientes(self):
-        print ("Las peliculas y series que ", self.nombre, " tiene pendientes son: " + ", ".join(self.pendienteVer))
+        print ("Las películas y series que ", self.nombre, " tiene pendientes son: " + ", ".join(self.pendienteVer))
 
     #Funcion que guarde pelicula en fichero

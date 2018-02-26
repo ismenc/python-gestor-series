@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+''' Clase dónde probaremos cosas de este paquete 
+
 import Pelicula as p
 import Usuario as u
 
@@ -20,8 +22,4 @@ visto = [peli.titulo, peli2.titulo, peli3.titulo]
 print ("Las peliculas son: " + ", ".join(usuario.visto))
 
 
-
-
-
-#Probar series. El toString de series tal vez no esté bien
-
+'''

@@ -54,7 +54,7 @@ class Util():
     ''' Devuelve un número entero leído y validado '''
     @staticmethod
     def leerEntero():
-        numero = raw_input()
+        numero = input()
         try:
             valor = int(numero)
         except ValueError:
@@ -63,34 +63,24 @@ class Util():
         return valor
     
 
-    ''' Carga el catálogo de películas en una lista '''
+    ''' WORK IN PROGRESS
+        Carga el catálogo de películas en una lista '''
     @staticmethod
     def cargarCatalogoPeliculas():
         archivo = open("datos/catalogo-peliculas.txt", "r")
         
-        print ("Catálogo de películas:")
+        peliculas = []
         linea = archivo.readline()
 
-        i = 0
         while linea != "":
-            pos1 = 0
-            pos2 = linea.find(",")
-            titulo = linea[pos1: pos2]
-            pos1 = pos2
-            pos2 = linea.find(",")
-            fechaEstreno = linea[pos1: pos2]
-            pos1 = pos2
-            pos2 = linea.find(",")
-            genero = linea[pos1: pos2]
-            pos1 = pos2
-            pos2 = linea.find(",")
-            director = linea[pos1: pos2]
-            pos1 = pos2
-            duracion = linea[pos1: len(linea)-1]
+            datos = linea.split(',')
+            titulo = datos[0]
+            fechaEstreno = datos[1]
+            genero = datos[2]
+            director = datos[3]
+            duracion = datos[4]
             
-            peliculas = []
-            peliculas[i] = P.Pelicula(titulo, fechaEstreno, genero, director, duracion)
-            i = i + 1
+            peliculas.append(P.Pelicula(titulo, fechaEstreno, genero, director, duracion))
             
             linea = archivo.readline()
         return peliculas
@@ -101,35 +91,24 @@ class Util():
     '''
     @staticmethod
     def cargarCatalogoSeries():
-        archivo = open("datos/catalogo-peliculas.txt", "r")
+        archivo = open("datos/catalogo-series.txt", "r")
         
         print ("Catálogo de películas:")
+        series = []
         linea = archivo.readline()
 
-        i = 0
         while linea != "":
-            pos1 = 0
-            pos2 = linea.find(",")
-            titulo = linea[pos1: pos2]
-            pos1 = pos2
-            pos2 = linea.find(",")
-            fechaEstreno = linea[pos1: pos2]
-            pos1 = pos2
-            pos2 = linea.find(",")
-            genero = linea[pos1: pos2]
-            pos1 = pos2
-            pos2 = linea.find(",")
-            director = linea[pos1: pos2]
-            pos1 = pos2
-            duracion = linea[pos1: len(linea)-1]
+            datos = linea.split(',')
+            titulo = datos[0]
+            fechaEstreno = datos[1]
+            genero = datos[2]
+            director = datos[3]
             
             # El array de temporadas me parecería más fácil si fuese la siguiente línea
             linea = archivo.readline()
-            ''' temporadas = linea (?) '''
+            temporadas = linea.split(',')
             
-            series = []
-            series[i] = S.Serie(titulo, fechaEstreno, genero, director, duracion, [1, 2, 3])
-            i = i + 1
+            series.append(S.Serie(titulo, fechaEstreno, genero, director, temporadas))
             
             linea = archivo.readline()
         return series
@@ -138,8 +117,8 @@ class Util():
     ''' Muestra por pantalla el mensaje y a continuación la lista de películas o series que le pasemos '''
     @staticmethod
     def mostrarLista(msg, lista):
-        print (msg + "\n".join(lista))
-        
+        print (msg + "\n" + "\n".join(p.toString() for p in lista))
+        #for p in lista: print(p.toString())
 
     '''
         Funcion que muestra el menú de la aplicación
@@ -149,7 +128,7 @@ class Util():
     @staticmethod
     def mostrar_menu():
         #os.system('clear')#limpia la pantalla antes de mostrar el menú (hay que hacer import os)
-        print ("Selecciona una opción")
+        print ("--------------------- Menú ---------------------")
         print ("\t1 - Ver catálogo de películas")
         print ("\t2 - Ver catálogo de series")
         print ("\t3 - Ver una serie")
@@ -157,8 +136,9 @@ class Util():
         print ("\t5 - Ver una pelicula")
         print ("\t6 - Añadir una película a pendientes")
         print ("\t7 - Mostrar películas y series vistas")
-        print ("\t8 - Mostrar peíiculas y series pendientes")
+        print ("\t8 - Mostrar películas y series pendientes")
         print ("\t9 - Cerrar sesion")
+        print ("------------------------------------------------")
         
     
     '''
@@ -172,7 +152,8 @@ class Util():
         while sesion_activa != False:
             Util.mostrar_menu()
         
-            opcion = input("Introduce el número de la opcion elegida: ")
+            print("Introduce el número de la opcion elegida: ")
+            opcion = Util.leerEntero()
             
             if opcion == 1:
                 Util.mostrarLista("Las películas disponibles son: ", peliculas)
@@ -184,30 +165,30 @@ class Util():
                 Util.mostrarLista("Las series disponibles son: ", series)
                 print ("Selecciona una serie para ver: ")
                 numero = Util.leerEntero()
-                usuario.addAVisto(series[numero])
+                usuario.addAVisto(series[numero].titulo)
             
             elif opcion == 4:
                 Util.mostrarLista("Las series disponibles son: ", series)
                 print ("Selecciona una serie para añadir a pendientes: ")
                 numero = Util.leerEntero()
-                usuario.addAPendienteVer(series[numero])
+                usuario.addAPendienteVer(series[numero].titulo)
                 
-            elif opcion == 4:
+            elif opcion == 5:
                 Util.mostrarLista("Las películas disponibles son: ", peliculas)
                 print ("Selecciona una Película para ver: ")
                 numero = Util.leerEntero()
-                usuario.addAVisto(peliculas[numero])
+                usuario.addAVisto(peliculas[numero].titulo)
             
-            elif opcion == 5:
+            elif opcion == 6:
                 Util.mostrarLista("Las películas disponibles son: ", peliculas)
                 print ("Selecciona una Película para añadir a pendientes: ")
                 numero = Util.leerEntero()
-                usuario.addAPendienteVer(peliculas[numero])
+                usuario.addAPendienteVer(peliculas[numero].titulo)
             
-            elif opcion == 6:
+            elif opcion == 7:
                 usuario.verVisto()
         
-            elif opcion == 7:
+            elif opcion == 8:
                 usuario.verPendientes()
                 
             elif opcion == 9:
