@@ -1,18 +1,29 @@
 # -*- coding: utf-8 -*-
-
+import os
 from Util import Util
 
 '''
 	Aplicación de streaming de series. Toda la gestión y documentación en...
 	-> https://github.com/ismenc/python-gestor-series
+	@author: Diego, Ismael, Davinia, Eduardo & Ricardo
 '''
 
-# Hacemos el login de usuario (en mi casa no va raw input)
 
-nombre_usuario = input("Introduce tu nombre de usuario: ")
-password = input("Introduce tu contraseña: ")
-datos_usuario = nombre_usuario + ", " + password
+''' -------------- Programa principal -------------- '''
 
-Util.logear(datos_usuario)
+#Llamada a la funcion para solicitar los datos
+print("Introduce el nombre de usuario: ")
+user = input()
+print("Introduce la contraseña: ")
+password = input()
 
-# Mostramos el menú con las opciones https://github.com/ismenc/python-gestor-series/blob/master/doc/enunciado-practica.pdf
+# Hacemos el login de usuario y cargamos los elementos necesarios
+usuario = Util.logear(user, password)
+pelis = Util.cargarCatalogoPeliculas()
+series = Util.cargarCatalogoSeries()
+
+sesion_activa = True
+while sesion_activa == True:
+	# Mostramos el menú con las opciones https://github.com/ismenc/python-gestor-series/blob/master/doc/enunciado-practica.pdf
+	sesion_activa = Util.tratar_menu(usuario, pelis, series)
+
