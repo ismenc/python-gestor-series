@@ -15,9 +15,9 @@ Created on 16 feb. 2018
 '''
 class Util():
 
+    ''' Nos permite logearnos si el usuario está en la base de datos o lo registra si no está. '''
     @staticmethod
     def logear(user, password):
-        ''' Nos permite logearnos si el usuario está en la base de datos o lo registra si no está. '''
         archivo = open("datos/usuarios.txt", "r+")
 
         linea = archivo.readline()
@@ -39,10 +39,8 @@ class Util():
         return usuario
     
 
-    '''
-        OBSOLETO
-        Funcion para solicitar los datos del usuario (podría integrarse en
-        la clase Util)
+    ''' OBSOLETO
+        Funcion para solicitar los datos del usuario (podría integrarse en la clase Util)
     '''
     @staticmethod
     def solicitar_datos_inicio():
@@ -53,9 +51,7 @@ class Util():
         return datos_usuario
     
 
-    '''
-        Devuelve un número entero leído y validado
-    '''
+    ''' Devuelve un número entero leído y validado '''
     @staticmethod
     def leerEntero():
         numero = raw_input()
@@ -67,9 +63,7 @@ class Util():
         return valor
     
 
-    '''
-    Carga el catálogo de películas en una lista
-    '''
+    ''' Carga el catálogo de películas en una lista '''
     @staticmethod
     def cargarCatalogoPeliculas():
         archivo = open("datos/catalogo-peliculas.txt", "r")
@@ -102,8 +96,7 @@ class Util():
         return peliculas
     
     
-    '''
-        WORK IN PROGRESS
+    ''' WORK IN PROGRESS
         Carga el catálogo de series en una lista 
     '''
     @staticmethod
@@ -135,7 +128,7 @@ class Util():
             ''' temporadas = linea (?) '''
             
             series = []
-            series[i] = S.Serie(titulo, fechaEstreno, genero, director, duracion''', temporadas''')
+            series[i] = S.Serie(titulo, fechaEstreno, genero, director, duracion, [1, 2, 3])
             i = i + 1
             
             linea = archivo.readline()
