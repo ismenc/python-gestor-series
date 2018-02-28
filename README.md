@@ -79,26 +79,60 @@ El proyecto se ha estructurado en varias carpetas.
 <details>
      <summary>Película</summary>
  <p>
+	 
+Clase que define la estructura de los objetos película.
+<br>
 
-Clase que define la estructura de los objetos película que tiene los atributos título, género, director, duración y fecha de estreno.
+#### Atributos
+
+* ***titulo:*** *título de la película*
+* ***fechaEstreno:*** *fecha de estreno de la película*
+* ***genero:*** *género(drama, comedia, etc.)*
+* ***director:*** *director de la película*
+* ***duracion:*** *duración de la película*
 
  </p>
- </details><br>
+ </details><br> 
 
 <details>
      <summary>Serie</summary>
  <p>
+	 
+Clase que define la estructura de datos del objeto serie.
+<br>
 
-Clase que define la estructura de datos del objeto serie que dispone de los atributos título, género, fecha de estreno, duración media de los capítulos y capítulos y temporadas hasta la fecha.
+#### Atributos
+
+* ***titulo:*** *título de la serie*
+* ***fechaEstreno:*** *fecha de estreno de la serie*
+* ***genero:*** *género(thriller, aventura, etc.)*
+* ***duracionCapitulo:*** *duración media*
+* ***temporadas:*** *temporadas de la serie, array de tipo String*
+* ***numTemporadas:*** *numero de temporadas actuales de la serie*
 
  </p>
- </details><br>
+ </details><br> 
 
  <details>
      <summary>Usuario</summary>
  <p>
 
-Clase que almacena los datos del usuario; así como su nombre, clave, edad y dos listas para guardar tanto las series o películas vistas como las marcadas en pendientes de ver. Tambien dispone de unos métodos para añadir dichas series o películas a sendos arrays o visualizar el contenido de estos.
+Clase que almacena los datos del usuario.
+
+#### Atributos
+
+* ***nombreUsuario:*** *nombre del usuario*
+* ***clave:*** *clave del usuario*
+* ***edad:*** *edad del usuario*
+* ***visto:*** *marcar como visto (array)*
+* ***pendienteVer:*** *marcar como pendiente de ver (array)*
+
+#### Métodos
+
+* ***addVisto():*** *agregar si ha visto la película o serie*
+* ***addPendienteVer():*** *agregar si tiene una película o serie pendiente*
+* ***verVistos():*** *ver listrado de reproducciones*
+* ***verPendientesVer():*** *ver listado de películas o series pendientes de ver*
 
  </p>
  </details><br>
@@ -109,6 +143,12 @@ Clase que almacena los datos del usuario; así como su nombre, clave, edad y dos
 
 Programa principal que contiene la línea de ejecución de nuestro programa
 
+#### Métodos
+
+* ***cargarPeliculas():*** *muestra las películas disponibles*
+* ***cargarSeries():*** *muestra las series disponibles*
+* ***mostrarCatalogo():*** *muestra el catálogo completo de series y películas*
+
  </p>
  </details><br>
 
@@ -117,13 +157,18 @@ Programa principal que contiene la línea de ejecución de nuestro programa
  <p>
 
 Clase que provee a la principal de los métodos estáticos para interactuar con el usuario y gestionar los objetos.
-* `loguear(user, password)` - nos permite logearnos si el usuario está en la base de datos o lo registra si no está
-* `mostrar_menu()` - muestra el menú con las opciones por pantalla
-* `tratar_menu()` - función que resuelve toda la casuística correspondiente a la opción elegida por el usuario
-* `leerEntero()` - solicita un número entero que sea validado
-* `cargarCatalogoPeliculas()` - carga las películas en el fichero X en memoria
-* `cargarCatalogoSeries()` - carga las series en el fichero X en memoria
-* `mostrarLista(msg, lista)` - muestra por pantalla el mensaje y a continuación la lista de películas o series que le pasemos
+
+#### Atributos
+
+* ***pelicula:*** *lista de películas (array)*
+* ***serie:*** *lista de series (array)*
+* ***usuario:*** *usuario el cuál accede a la aplicación*
+
+#### Métodos
+
+* ***mostrarMenu():*** *método que mostrará un menú con las opciones disponibles*
+* ***tratarMenu():*** *método que tratará la opción elegida del menú*
+* ***solicitarDatos():*** *método para la gestión del usuario que se quiera registrar*
 
  </p>
  </details>
