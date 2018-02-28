@@ -40,12 +40,15 @@ Git es un **sistema de control de versiones** (vcs) que permite la colaboración
 	  <br>
 
 ## Índice de contenidos
+<br>
 
-[1. Integrantes](#integrantes)
-[2. Estructura del proyecto](#estructura-del-proyecto)
-[3. Funcionamiento de la aplicación](#funcionamiento-de-la-aplicación)
-[4. Manual del proyecto](#manual-del-proyecto)
-[5. Fallos conocidos y mejoras propuestas](#fallos-conocidos-y-mejoras-propuestas)
+* Índice
+    * [1. Integrantes](#1-integrantes)
+    * [2. Estructura del proyecto](#2-estructura-del-proyecto)
+    * [3. Funcionamiento de la aplicación](#3-funcionamiento-de-la-aplicación)
+    * [4. Manual del proyecto](#4-manual-del-proyecto)
+    * [5. Fallos conocidos y mejoras propuestas](#5-fallos-conocidos-y-mejoras-propuestas)
+    * [6. Historial de versiones](#6-historial-de-versiones)
 
 ## 1. Integrantes
 
@@ -70,7 +73,7 @@ El proyecto se ha estructurado en varias carpetas.
 
 <img src="doc/diagrama-clases.png" alt="">
 
-### Desplegable de clases
+### Estructura de clases
 <br>
 
 <details>
@@ -137,9 +140,9 @@ Clase que provee a la principal de los métodos estáticos para interactuar con 
 
  Por brevedad no mostraremos las imágenes de todas las opciones.
 
- **¿Por qué no lo pruebas por tí mismo?
+ **¿Por qué no lo pruebas por tí mismo?**
 
- Dirígete a [releases](https://github.com/ismenc/python-gestor-series/releases)**
+ > Dirígete a [releases](https://github.com/ismenc/python-gestor-series/releases)
 
 
  ## 4. Manual del proyecto
@@ -171,3 +174,8 @@ Clase que provee a la principal de los métodos estáticos para interactuar con 
  * Mejorar el sistema de guardado de series vistas para poder contabilizar los capítulos vistos
  * Más participación de parte de los integrantes del proyecto :boom:
  * Interfaz gráfica
+ 
+ ## 6. Historial de versiones
+ 
+ Para ver el mapa de versiones entra en:
+ > [:scroll: Network](https://github.com/ismenc/python-gestor-series/network)
