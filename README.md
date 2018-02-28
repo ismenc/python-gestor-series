@@ -1,6 +1,6 @@
 # Gestor de aplicación de stream de series
 
-Proyecto de gestión de sistema de stream de series programado en Python para la asignatura de 'Sistemas de gestión empresarial'.
+:clapper: Aplicación de gestión de un **sistema de stream de series y películas** programado en Python para la asignatura de 'Sistemas de gestión empresarial'. Nuestra aplicación consiste en un sistema que ofrece al usuario registrado logearse y ver las películas o series disponibles, *mientras esté al corriente de pago* :money_with_wings:. El sistema trackeará que películas y series ha visto.
 
 ## Guía para colaborar
 <br>
@@ -43,6 +43,8 @@ Git es un **sistema de control de versiones** (vcs) que permite la colaboración
 
 1. [Integrantes](#integrantes)
 2. [Estructura del proyecto](#estructura-del-proyecto)
+3. [Funcionamiento de la aplicación](#funcionamiento-de-la-aplicación)
+4. [Fallos conocidos](#fallos-conocidos)
 
 ## Integrantes
 
@@ -55,16 +57,26 @@ Los participantes en el proyecto son:
 
 ## Estructura del proyecto
 
+El proyecto se ha estructurado en varias carpetas.
+
+:open_file_folder: [src](src/) - carpeta raíz del código fuente. Donde se encuentran las carpetas `modelo`, `datos` y clases principal y Util.
+
+:open_file_folder: [modelo](src/modelo/) - carpeta donde se encuentran los modelos de los objetos `Usuario`, `Serie` y `Pelicula`.
+
+:open_file_folder: [datos](src/datos/) - carpeta donde se encuentran los ficheros de persistencia de datos.
+
+### Diagrama de clases
+
 <img src="doc/diagrama-clases.png" alt="">
 
-## Desplegable de clases
+### Desplegable de clases
 <br>
 
 <details>
      <summary>Película</summary>
  <p>
 	 
-Clase que define la estructura de datos de las películas; así como su título, género, director, duración y fecha de estreno.
+Clase que define la estructura de los objetos película que tiene los atributos título, género, director, duración y fecha de estreno.
 
  </p>
  </details><br> 
@@ -73,7 +85,7 @@ Clase que define la estructura de datos de las películas; así como su título,
      <summary>Serie</summary>
  <p>
 	 
-Clase que define la estructura de datos de las series; así como su título, género, fecha de estreno, duración media de los capítulos y número de temporadas hasta la fecha.
+Clase que define la estructura de datos del objeto serie que dispone de los atributos título, género, fecha de estreno, duración media de los capítulos y capítulos y temporadas hasta la fecha.
 
  </p>
  </details><br> 
@@ -82,8 +94,7 @@ Clase que define la estructura de datos de las series; así como su título, gé
      <summary>Usuario</summary>
  <p>
 	 
-Clase que almacena los datos del usuario; así como su nombre, clave, edad y dos arrays para guardar tanto las series o películas vistas como las marcadas en pendientes de ver. Tambien dispone de unos métodos para añadir dichas series o películas a sendos arrays o visualizar el contenido de estos.
-Se han realizado controles para evitar introducir más de una vez, la misma serie o película, en los metodos para añadir a visto o marcar como pendiente.
+Clase que almacena los datos del usuario; así como su nombre, clave, edad y dos listas para guardar tanto las series o películas vistas como las marcadas en pendientes de ver. Tambien dispone de unos métodos para añadir dichas series o películas a sendos arrays o visualizar el contenido de estos.
 
  </p>
  </details><br> 
@@ -92,7 +103,7 @@ Se han realizado controles para evitar introducir más de una vez, la misma seri
      <summary>_init_</summary>
  <p>
 	 
-Principal donde ejecutamos todas las acciones.
+Programa principal que contiene la línea de ejecución de nuestro programa
 
  </p>
  </details><br> 
@@ -102,13 +113,29 @@ Principal donde ejecutamos todas las acciones.
  <p>
 	 
 Clase que provee a la principal de los métodos estáticos para interactuar con el usuario y gestionar los objetos.
-* loguear(user, password) - nos permite logearnos si el usuario está en la base de datos o lo registra si no está
-* mostrar_menu() - muestra el menú con las opciones por pantalla
-* tratar_menu() - función que resuelve toda la casuística correspondiente a la opción elegida por el usuario
-* leerEntero() - solicita un número entero que sea validado
-* cargarCatalogoPeliculas() - carga las películas en el fichero X en memoria
-* cargarCatalogoSeries() - carga las series en el fichero X en memoria
-* mostrarLista(msg, lista) - muestra por pantalla el mensaje y a continuación la lista de películas o series que le pasemos
+* `loguear(user, password)` - nos permite logearnos si el usuario está en la base de datos o lo registra si no está
+* `mostrar_menu()` - muestra el menú con las opciones por pantalla
+* `tratar_menu()` - función que resuelve toda la casuística correspondiente a la opción elegida por el usuario
+* `leerEntero()` - solicita un número entero que sea validado
+* `cargarCatalogoPeliculas()` - carga las películas en el fichero X en memoria
+* `cargarCatalogoSeries()` - carga las series en el fichero X en memoria
+* `mostrarLista(msg, lista)` - muestra por pantalla el mensaje y a continuación la lista de películas o series que le pasemos
 
  </p>
  </details>
+ 
+ ## Funcionamiento de la aplicación
+ 
+ Nada más iniciar la aplicación, solicitará los datos de usuario y si no existe lo creará y guardará en la base de datos (usuarios.txt), como se muestra en la imagen:
+ 
+ <img src="doc/login.png" alt="">
+ 
+ Tras comprobar el pago, aparecerá un menú que le permitirá al usuario operar con el sistema.
+ 
+ <img src="doc/menu-principal.png" alt="">
+ 
+ 
+ ## Fallos conocidos
+ 
+ 
+ 
