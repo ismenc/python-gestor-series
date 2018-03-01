@@ -2,6 +2,9 @@
 
 
 class Usuario:
+    '''
+    Clase que define la estructura de datos del usuario
+    '''
     nombre = ""
     clave = ""
     edad = 0
@@ -12,22 +15,45 @@ class Usuario:
         self.nombre = nombre
         self.clave = clave
         self.edad = edad
+        
+        
+    ''' Métodos para añadir a las listas '''
 
     def addAVisto(self, serieOPelicula):
+        # Validamos que no esté ya en visto
         if serieOPelicula not in self.visto:
             self.visto.append(serieOPelicula)
+            # Elminamos de pendiente si la hemos visto
+            if serieOPelicula in self.pendienteVer:
+                self.pendienteVer.remove(serieOPelicula)
         else:
-            print("Ya se encuentra en la lista.")
+            print("La "+ serieOPelicula + " ya se encontraba en visto.")
 
     def addAPendienteVer(self, serieOPelicula):
-        if serieOPelicula not in self.pendienteVer:
-            self.pendienteVer.append(serieOPelicula)
+        # Agregamos si no está en visto
+        if serieOPelicula not in self.visto:
+            # Validamos que no esté ya en pendiente
+            if serieOPelicula not in self.pendienteVer:
+                self.pendienteVer.append(serieOPelicula)
+            else:
+                print("La "+ serieOPelicula + " ya se encontraba en pendientes.")
         else:
-            print("Ya se encuentra en la lista.")
-
+            print("La "+ serieOPelicula + " ya se ha visto y no se puede añadir a pendiente")
+            
+            
+    ''' Métodos para mostrar por pantalla '''
+            
     def verVisto(self):
-        print ("Las películas y series que ", self.nombre, " ha visto son: " + ", ".join(self.visto))
+        # Validamos que haya visto algo
+        if len(self.visto) == 0:
+            print(self.nombre+ " no ha visto nada todavía.")
+        else:
+            print ("Las películas y series que "+ self.nombre+ " ha visto son: " + ", ".join(self.visto))
 
     def verPendientes(self):
-        print ("Las películas y series que ", self.nombre, " tiene pendientes son: " + ", ".join(self.pendienteVer))
+        #validamos que se hayaañadido algo a pendiente
+        if len(self.pendienteVer) == 0:
+            print(self.nombre+ " no ha añadido nada a pendiente todavía.")
+        else:
+            print ("Las películas y series que "+ self.nombre+ " tiene pendientes son: " + ", ".join(self.pendienteVer))
 

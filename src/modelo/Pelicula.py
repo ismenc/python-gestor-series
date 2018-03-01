@@ -33,7 +33,7 @@ class Pelicula(object):
         return cadena
 
 
-    #Funcion que guarde pelicula en fichero
+    #Funcion que guarde pelicula en fichero no está usado
 
     def guardarPelicula(self):
         archivo = open("../datos/catalogoPeliculas.txt", "w")

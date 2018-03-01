@@ -7,6 +7,9 @@ Created on 22 feb. 2018
 '''
 
 class Serie(object):
+    '''
+    Modelo de serie
+    '''
     titulo = ""
     fechaEstreno = ""
     genero = ""

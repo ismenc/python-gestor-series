@@ -13,9 +13,9 @@ from Util import Util
 
 #Llamada a la funcion para solicitar los datos
 print("Introduce el nombre de usuario: ")
-user = input()
+user = raw_input()
 print("Introduce la contraseña: ")
-password = input()
+password = raw_input()
 
 # Hacemos el login de usuario y cargamos los elementos necesarios
 usuario = Util.logear(user, password)

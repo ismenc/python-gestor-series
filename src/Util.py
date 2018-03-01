@@ -3,8 +3,8 @@
 import modelo.Usuario as U
 import modelo.Pelicula as P
 import modelo.Serie as S
-from pip._vendor.distlib.compat import raw_input
-from builtins import int
+#from pip._vendor.distlib.compat import raw_input
+#from builtins import int
 from modelo.Pelicula import Pelicula
 
 '''
@@ -33,7 +33,7 @@ class Util():
 
         if usuario_encontrado == False:
             '''Tendría que llamar a otro metodo que pida el resto de datos del usuario y lo registre'''
-            print ("Usuario registrado correctamente")
+            print ("Procedemos a registrar un nuevo usuario.\nUsuario registrado correctamente.")
             archivo.write("\n" + user + ", " + password)
             usuario = U.Usuario(user, password, 22)
         return usuario
@@ -63,7 +63,7 @@ class Util():
         return valor
     
 
-    ''' WORK IN PROGRESS
+    '''
         Carga el catálogo de películas en una lista '''
     @staticmethod
     def cargarCatalogoPeliculas():
@@ -86,7 +86,7 @@ class Util():
         return peliculas
     
     
-    ''' WORK IN PROGRESS
+    ''' 
         Carga el catálogo de series en una lista 
     '''
     @staticmethod
@@ -118,7 +118,7 @@ class Util():
     @staticmethod
     def mostrarLista(msg, lista):
         print (msg + "\n" + "\n".join(p.toString() for p in lista))
-        #for p in lista: print(p.toString())
+
 
     '''
         Funcion que muestra el menú de la aplicación
@@ -143,6 +143,7 @@ class Util():
     
     '''
         Función que resuelve toda la casuística correspondiente a la opción elegida por el usuario.
+        Devuelve si la sesión sigue activa para que el main pueda finalizar.
     '''
     @staticmethod
     def tratar_menu(usuario, peliculas, series):
@@ -200,3 +201,7 @@ class Util():
                 opcion = 0
         
         return sesion_activa
+    
+    
+    
+    
