@@ -2,3 +2,7 @@ Game of Thrones,2011,Cifi,George R. R. Martin
 55,10,10,10,10,10,10,7
 Stranger Things,2017,Cifi,yo
 45,10,9
+WestWorld,2017,cifi,Surmanus
+20,9,11
+Pipi Casaslargas,1899,infantil,LostFilms
+88,10,10,10,50,8

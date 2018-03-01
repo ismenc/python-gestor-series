@@ -28,7 +28,7 @@ class Usuario:
                 self.pendienteVer.remove(serieOPelicula)
                 print("Se ha añadido a visto correctamente.")
         else:
-            print("La "+ serieOPelicula + " ya se encontraba en visto.")
+            print(serieOPelicula + " ya se encontraba en visto.")
 
     def addAPendienteVer(self, serieOPelicula):
         # Agregamos si no está en visto
@@ -38,9 +38,9 @@ class Usuario:
                 self.pendienteVer.append(serieOPelicula)
                 print("Se ha añadido a pendientes correctamente.")
             else:
-                print("La "+ serieOPelicula + " ya se encontraba en pendientes.")
+                print(serieOPelicula + " ya se encontraba en pendientes.")
         else:
-            print("La "+ serieOPelicula + " ya se ha visto y no se puede añadir a pendiente")
+            print(serieOPelicula + " ya se ha visto y no se puede añadir a pendiente")
             
             
     ''' Métodos para mostrar por pantalla '''
@@ -50,12 +50,12 @@ class Usuario:
         if len(self.visto) == 0:
             print(self.nombre+ " no ha visto nada todavía.")
         else:
-            print ("Las películas y series que "+ self.nombre+ " ha visto son: " + "\n".join(self.visto))
+            print ("Las películas y series que "+ self.nombre+ " ha visto son: \n* " + "\n* ".join(self.visto))
 
     def verPendientes(self):
         #validamos que se hayaañadido algo a pendiente
         if len(self.pendienteVer) == 0:
             print(self.nombre+ " no ha añadido nada a pendiente todavía.")
         else:
-            print ("Las películas y series que "+ self.nombre+ " tiene pendientes son: \n" + "\n* ".join(self.pendienteVer))
+            print ("Las películas y series que "+ self.nombre+ " tiene pendientes son: \n* " + "\n* ".join(self.pendienteVer))
 

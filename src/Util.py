@@ -3,9 +3,6 @@
 import modelo.Usuario as U
 import modelo.Pelicula as P
 import modelo.Serie as S
-#from pip._vendor.distlib.compat import raw_input
-#from builtins import int
-from modelo.Pelicula import Pelicula
 
 '''
     Clase auxiliar que provee a nuestra aplicación de las funciones necesarias.
@@ -14,6 +11,62 @@ Created on 16 feb. 2018
 @author: Diego
 '''
 class Util():
+    
+    ''' Solicitar cadena nombre o password '''
+    @staticmethod
+    def solicitarCadena(msg):
+        print(msg)
+        cadena = input()
+        
+        if(len(cadena) < 2):
+            cadena = Util.solicitarCadena("Entrada no válida. "+msg)
+        
+        return cadena
+    
+    
+    ''' Devuelve un número entero leído y validado '''
+    @staticmethod
+    def leerEntero():
+        
+        try:
+            numero = input()
+            valor = int(numero)
+        except NameError:
+            print ("Debes introducir un número. Intenta de nuevo, tu puedes!")
+            valor = Util.leerEntero()
+        except ValueError:
+            print ("Debes introducir un número. Intenta de nuevo, tu puedes!")
+            valor = Util.leerEntero()
+            
+        return valor
+    
+        
+    ''' Preguntar si/no '''
+    @staticmethod
+    def preguntarSiNo(msg):
+        respuesta = Util.solicitarCadena(msg)
+        while respuesta != "si" and respuesta != "no":
+            print("Error. Debe responder si/no.")
+            respuesta = Util.preguntarSiNo(msg)
+        
+        return respuesta
+    
+    
+    ''' Da de alta un nuevo usuario '''
+    @staticmethod
+    def registrarUsuario(user, password, edad):
+        ''' Registra a un usuario en la base de datos '''
+        
+        archivo = open("datos/usuarios.txt", "r+")
+        linea = archivo.readline()
+        
+        print ("Procedemos a registrar un nuevo usuario.\nUsuario registrado correctamente.")
+        archivo.write("\n" + user + "," + password +","+ str(edad))
+        usuario = U.Usuario(user, password, edad)
+        
+        return usuario
+    
+    
 
     ''' Nos permite logearnos si el usuario está en la base de datos o lo registra si no está. '''
     @staticmethod
@@ -24,34 +77,29 @@ class Util():
         usuario_encontrado = False
 
         while linea != "" and usuario_encontrado == False:
-            if linea.find(user + ", " + password) == 0:
+            if linea.find(user + "," + password) == 0:
                 print ("Logueado correctamente")
                 usuario_encontrado = True
-                usuario = U.Usuario(user, password, 22)
+                datos = linea.split(',')
+                usuario = U.Usuario(datos[0], datos[1], datos[2])
             else:
                 linea = archivo.readline()
 
         if usuario_encontrado == False:
-            '''Tendría que llamar a otro metodo que pida el resto de datos del usuario y lo registre'''
-            print ("Procedemos a registrar un nuevo usuario.\nUsuario registrado correctamente.")
-            archivo.write("\n" + user + ", " + password)
-            usuario = U.Usuario(user, password, 22)
+            respuesta = Util.preguntarSiNo("Usuario no registrado. ¿Desea registrar el nuevo usuario? (si/no)")
+                
+            if(respuesta == "si"):
+                print("Introduzca su edad:")
+                edad = Util.leerEntero()
+                usuario = Util.registrarUsuario(user, password, edad)
+            else:
+                user = Util.solicitarCadena("Introduce el nombre de usuario registrado: ")
+                user = Util.solicitarCadena("Introduce la contraseña: ")
+                usuario = Util.logear(user, password)
+            
         return usuario
     
     
-
-    ''' Devuelve un número entero leído y validado '''
-    @staticmethod
-    def leerEntero():
-        
-        try:
-            numero = input()
-            valor = int(numero)
-        except NameError, ValueError:
-            print ("Debes introducir un número. Intenta de nuevo, tu puedes!")
-            valor = Util.leerEntero()
-            
-        return valor
     
 
     ''' Carga el catálogo de películas en una lista '''
@@ -97,8 +145,10 @@ class Util():
             # El array de temporadas me parecería más fácil si fuese la siguiente línea
             linea = archivo.readline()
             temporadas = linea.split(',')
+            duracion = temporadas[0]
+            temporadas.remove(temporadas[0])
             
-            series.append(S.Serie(titulo, fechaEstreno, genero, director, temporadas))
+            series.append(S.Serie(titulo, fechaEstreno, genero, director, duracion, temporadas))
             
             linea = archivo.readline()
         return series

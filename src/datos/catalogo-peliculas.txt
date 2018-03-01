@@ -1,2 +1,4 @@
 Star Wars,2016,Cifi,George Lucas,136
 Black Panther,2018,Cifi,Marvel,137
+Gremlins,1994,fantasia,Diwa,68
+No Imagination,2018,documental,Disney,74

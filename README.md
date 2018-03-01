@@ -49,6 +49,8 @@ Git es un **sistema de control de versiones** (vcs) que permite la colaboración
     * [4. Manual del proyecto](#4-manual-del-proyecto)
     * [5. Fallos conocidos y mejoras propuestas](#5-fallos-conocidos-y-mejoras-propuestas)
     * [6. Historial de versiones](#6-historial-de-versiones)
+    * [7. Problemas y soluciones](#7-problemas-y-soluciones)
+    * [Agradecimientos](#agradecimientos)
 
 ## 1. Integrantes
 
@@ -199,16 +201,16 @@ Clase que provee a la principal de los métodos estáticos para interactuar con 
 
  ### Fallos conocidos :exclamation:
 
- * Los datos del usuario no persisten (series y pelis vistas y pendientes).
+ * Los datos de vistas/pendientes de usuario no persisten.
  * No se pueden marcar como vistas temporadas o capítulos aislados de series.
  * No existe opción aparte para registro de usuario.
  * El sistema de pagos no fucniona :joy:
- * No hay opciones para introducir nuevas series o películas
 
  ### Aciertos :heavy_check_mark:
 
  * Entradas por teclado validadas
  * Peliculas y series agregadas a visto/pendientes validadas
+ * Experiencia de usuario
  * Modularización, legibilidad y mantenibilidad
  * Documentación
  * Organización
@@ -224,3 +226,20 @@ Clase que provee a la principal de los métodos estáticos para interactuar con 
  
  Para ver el mapa de versiones entra en:
  > [:scroll: Network](https://github.com/ismenc/python-gestor-series/network)
+
+ 
+ ## 7. Problemas y soluciones
+ 
+  :question: Algunos participantes han usado Python 3 y otros Python 2. Lee a continuación cómo solucionar posibles problemas.
+ 
+ :red_circle: Python 3 puede marcar errores en librerías que son necesarias para Python 2 y viceversa.
+ :heavy_check_mark: Comenta y descomenta mediante `#` las líneas de los imports erróneos.
+ 
+ :red_circle: En Python 3, se han unido las funciones `input` y `raw_input`. 
+ :heavy_check_mark: Si surgen errores cambia `input` por `raw_input` en `Util.py` -> `solicitarCadena()` y `leerEntero()`. 
+
+## Agradecimientos
+
+Agradecimientos a *Manolo* Por ser comprensivo y flexible con la entrega del proyecto, ayudarnos y leer este documento :joy:. 
+
+ 

@@ -1,7 +1,2 @@
-diego, diego123
-davinia, davinia123
-usuario, usuario
-1, 1
-23, 234
-4, 4
-a, a
+isma,isma,23
+usuario,usuario,50
