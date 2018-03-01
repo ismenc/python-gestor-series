@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-import os
+
 from Util import Util
+from modelo.Usuario import Usuario
 
 '''
 	Aplicación de streaming de series. Toda la gestión y documentación en...
@@ -26,4 +27,3 @@ sesion_activa = True
 while sesion_activa == True:
 	# Mostramos el menú con las opciones https://github.com/ismenc/python-gestor-series/blob/master/doc/enunciado-practica.pdf
 	sesion_activa = Util.tratar_menu(usuario, pelis, series)
-

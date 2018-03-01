@@ -38,33 +38,23 @@ class Util():
             usuario = U.Usuario(user, password, 22)
         return usuario
     
-
-    ''' OBSOLETO
-        Funcion para solicitar los datos del usuario (podría integrarse en la clase Util)
-    '''
-    @staticmethod
-    def solicitar_datos_inicio():
-        nombre_usuario = input("Introduce tu nombre de usuario: ")
-        password = input("Introduce tu contraseña: ")
-        datos_usuario = nombre_usuario + ", " + password
-            
-        return datos_usuario
     
 
     ''' Devuelve un número entero leído y validado '''
     @staticmethod
     def leerEntero():
-        numero = input()
+        
         try:
+            numero = input()
             valor = int(numero)
-        except ValueError:
+        except NameError, ValueError:
             print ("Debes introducir un número. Intenta de nuevo, tu puedes!")
             valor = Util.leerEntero()
+            
         return valor
     
 
-    '''
-        Carga el catálogo de películas en una lista '''
+    ''' Carga el catálogo de películas en una lista '''
     @staticmethod
     def cargarCatalogoPeliculas():
         archivo = open("datos/catalogo-peliculas.txt", "r")
@@ -117,7 +107,7 @@ class Util():
     ''' Muestra por pantalla el mensaje y a continuación la lista de películas o series que le pasemos '''
     @staticmethod
     def mostrarLista(msg, lista):
-        print (msg + "\n" + "\n".join(p.toString() for p in lista))
+        print (msg + "\n" + "\n".join(str(lista.index(p)+1) +" - "+ p.toString() for p in lista))
 
 
     '''
@@ -164,27 +154,39 @@ class Util():
                 
             elif opcion == 3:
                 Util.mostrarLista("Las series disponibles son: ", series)
-                print ("Selecciona una serie para ver: ")
+                print ("Introduzca el número de serie para ver: ")
                 numero = Util.leerEntero()
-                usuario.addAVisto(series[numero].titulo)
+                try:
+                    usuario.addAVisto(series[numero-1].titulo)
+                except IndexError:
+                    print("Error. Debe seleccionar una serie de la lista.")
             
             elif opcion == 4:
                 Util.mostrarLista("Las series disponibles son: ", series)
-                print ("Selecciona una serie para añadir a pendientes: ")
+                print ("Introduzca el número de serie para añadir a pendientes: ")
                 numero = Util.leerEntero()
-                usuario.addAPendienteVer(series[numero].titulo)
+                try:
+                    usuario.addAPendienteVer(series[numero-1].titulo)
+                except IndexError:
+                    print("Error. Debe seleccionar una serie de la lista.")
                 
             elif opcion == 5:
                 Util.mostrarLista("Las películas disponibles son: ", peliculas)
-                print ("Selecciona una Película para ver: ")
+                print ("Introduzca el número de película para ver: ")
                 numero = Util.leerEntero()
-                usuario.addAVisto(peliculas[numero].titulo)
+                try:
+                    usuario.addAVisto(peliculas[numero-1].titulo)
+                except IndexError:
+                    print("Error. Debe seleccionar una película de la lista.")
             
             elif opcion == 6:
                 Util.mostrarLista("Las películas disponibles son: ", peliculas)
-                print ("Selecciona una Película para añadir a pendientes: ")
+                print ("Introduzca el número de película para añadir a pendientes: ")
                 numero = Util.leerEntero()
-                usuario.addAPendienteVer(peliculas[numero].titulo)
+                try:
+                    usuario.addAPendienteVer(peliculas[numero-1].titulo)
+                except IndexError:
+                    print("Error. Debe seleccionar una película de la lista.")
             
             elif opcion == 7:
                 usuario.verVisto()

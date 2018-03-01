@@ -26,6 +26,7 @@ class Usuario:
             # Elminamos de pendiente si la hemos visto
             if serieOPelicula in self.pendienteVer:
                 self.pendienteVer.remove(serieOPelicula)
+                print("Se ha añadido a visto correctamente.")
         else:
             print("La "+ serieOPelicula + " ya se encontraba en visto.")
 
@@ -35,6 +36,7 @@ class Usuario:
             # Validamos que no esté ya en pendiente
             if serieOPelicula not in self.pendienteVer:
                 self.pendienteVer.append(serieOPelicula)
+                print("Se ha añadido a pendientes correctamente.")
             else:
                 print("La "+ serieOPelicula + " ya se encontraba en pendientes.")
         else:
@@ -48,12 +50,12 @@ class Usuario:
         if len(self.visto) == 0:
             print(self.nombre+ " no ha visto nada todavía.")
         else:
-            print ("Las películas y series que "+ self.nombre+ " ha visto son: " + ", ".join(self.visto))
+            print ("Las películas y series que "+ self.nombre+ " ha visto son: " + "\n".join(self.visto))
 
     def verPendientes(self):
         #validamos que se hayaañadido algo a pendiente
         if len(self.pendienteVer) == 0:
             print(self.nombre+ " no ha añadido nada a pendiente todavía.")
         else:
-            print ("Las películas y series que "+ self.nombre+ " tiene pendientes son: " + ", ".join(self.pendienteVer))
+            print ("Las películas y series que "+ self.nombre+ " tiene pendientes son: \n" + "\n* ".join(self.pendienteVer))
 
