@@ -231,11 +231,17 @@ Clase que provee a la principal de los métodos estáticos para interactuar con 
  ## 7. Problemas y soluciones
  
   :question: Algunos participantes han usado Python 3 y otros Python 2. Lee a continuación cómo solucionar posibles problemas.
+  
+  <br>
  
  :red_circle: Python 3 puede marcar errores en librerías que son necesarias para Python 2 y viceversa.
+ 
  :heavy_check_mark: Comenta y descomenta mediante `#` las líneas de los imports erróneos.
  
+ <br>
+ 
  :red_circle: En Python 3, se han unido las funciones `input` y `raw_input`. 
+ 
  :heavy_check_mark: Si surgen errores cambia `input` por `raw_input` en `Util.py` -> `solicitarCadena()` y `leerEntero()`. 
 
 ## Agradecimientos
