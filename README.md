@@ -208,7 +208,8 @@ Clase que provee a la principal de los métodos estáticos para interactuar con 
 
  ### Aciertos :heavy_check_mark:
 
- * Entradas por teclado validadas
+ * Todas las entradas validadas (que conozcamos)
+ * Capturación de erroes
  * Peliculas y series agregadas a visto/pendientes validadas
  * Experiencia de usuario
  * Modularización, legibilidad y mantenibilidad

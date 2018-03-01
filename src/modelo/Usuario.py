@@ -12,6 +12,9 @@ class Usuario:
     pendienteVer = []
 
     def __init__(self, nombre, clave, edad):
+        if(edad < 16 or edad > 90):
+            raise ValueError("Edad no válida")
+        
         self.nombre = nombre
         self.clave = clave
         self.edad = edad

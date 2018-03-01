@@ -26,17 +26,22 @@ class Util():
     
     ''' Devuelve un número entero leído y validado '''
     @staticmethod
-    def leerEntero():
+    def leerEntero(msg):
+        
+        print(msg)
         
         try:
             numero = input()
             valor = int(numero)
         except NameError:
-            print ("Debes introducir un número. Intenta de nuevo, tu puedes!")
-            valor = Util.leerEntero()
+            print ("Debes introducir un número entero positivo. Intenta de nuevo, tu puedes!")
+            valor = Util.leerEntero(msg)
         except ValueError:
-            print ("Debes introducir un número. Intenta de nuevo, tu puedes!")
-            valor = Util.leerEntero()
+            print ("Debes introducir un número entero positivo. Intenta de nuevo, tu puedes!")
+            valor = Util.leerEntero(msg)
+        if(valor < 1):
+            print ("Debes introducir un número entero positivo. Intenta de nuevo, tu puedes!")
+            valor = Util.leerEntero(msg)
             
         return valor
     
@@ -57,12 +62,12 @@ class Util():
     def registrarUsuario(user, password, edad):
         ''' Registra a un usuario en la base de datos '''
         
+        usuario = U.Usuario(user, password, edad)
         archivo = open("datos/usuarios.txt", "r+")
         linea = archivo.readline()
         
         print ("Procedemos a registrar un nuevo usuario.\nUsuario registrado correctamente.")
         archivo.write("\n" + user + "," + password +","+ str(edad))
-        usuario = U.Usuario(user, password, edad)
         
         return usuario
     
@@ -76,26 +81,31 @@ class Util():
         linea = archivo.readline()
         usuario_encontrado = False
 
-        while linea != "" and usuario_encontrado == False:
-            if linea.find(user + "," + password) == 0:
-                print ("Logueado correctamente")
-                usuario_encontrado = True
-                datos = linea.split(',')
-                usuario = U.Usuario(datos[0], datos[1], datos[2])
-            else:
-                linea = archivo.readline()
-
-        if usuario_encontrado == False:
-            respuesta = Util.preguntarSiNo("Usuario no registrado. ¿Desea registrar el nuevo usuario? (si/no)")
-                
-            if(respuesta == "si"):
-                print("Introduzca su edad:")
-                edad = Util.leerEntero()
-                usuario = Util.registrarUsuario(user, password, edad)
-            else:
-                user = Util.solicitarCadena("Introduce el nombre de usuario registrado: ")
-                user = Util.solicitarCadena("Introduce la contraseña: ")
-                usuario = Util.logear(user, password)
+        try:
+            while linea != "" and usuario_encontrado == False:
+                if linea.find(user + "," + password) == 0:
+                    print ("Logueado correctamente")
+                    usuario_encontrado = True
+                    datos = linea.split(',')
+                    usuario = U.Usuario(datos[0], datos[1], datos[2])
+                else:
+                    linea = archivo.readline()
+    
+            if usuario_encontrado == False:
+                respuesta = Util.preguntarSiNo("Usuario no registrado. ¿Desea registrar el nuevo usuario? (si/no)")
+                    
+                if(respuesta == "si"):
+                    edad = Util.leerEntero("Introduzca su edad:")
+                    usuario = Util.registrarUsuario(user, password, edad)
+                else:
+                    user = Util.solicitarCadena("Introduce el nombre de usuario registrado: ")
+                    password = Util.solicitarCadena("Introduce la contraseña: ")
+                    usuario = Util.logear(user, password)
+        except ValueError as error:
+            print("Error registrando a usuario: " + str(error))
+            user = Util.solicitarCadena("Login:\nIntroduce el nombre de usuario registrado: ")
+            password = Util.solicitarCadena("Introduce la contraseña: ")
+            usuario = Util.logear(user, password)
             
         return usuario
     
@@ -192,9 +202,7 @@ class Util():
         
         while sesion_activa != False:
             Util.mostrar_menu()
-        
-            print("Introduce el número de la opcion elegida: ")
-            opcion = Util.leerEntero()
+            opcion = Util.leerEntero("Introduce el número de la opcion elegida: ")
             
             if opcion == 1:
                 Util.mostrarLista("Las películas disponibles son: ", peliculas)
@@ -204,8 +212,7 @@ class Util():
                 
             elif opcion == 3:
                 Util.mostrarLista("Las series disponibles son: ", series)
-                print ("Introduzca el número de serie para ver: ")
-                numero = Util.leerEntero()
+                numero = Util.leerEntero("Introduzca el número de serie para ver: ")
                 try:
                     usuario.addAVisto(series[numero-1].titulo)
                 except IndexError:
@@ -213,8 +220,7 @@ class Util():
             
             elif opcion == 4:
                 Util.mostrarLista("Las series disponibles son: ", series)
-                print ("Introduzca el número de serie para añadir a pendientes: ")
-                numero = Util.leerEntero()
+                numero = Util.leerEntero("Introduzca el número de serie para añadir a pendientes: ")
                 try:
                     usuario.addAPendienteVer(series[numero-1].titulo)
                 except IndexError:
@@ -222,8 +228,7 @@ class Util():
                 
             elif opcion == 5:
                 Util.mostrarLista("Las películas disponibles son: ", peliculas)
-                print ("Introduzca el número de película para ver: ")
-                numero = Util.leerEntero()
+                numero = Util.leerEntero("Introduzca el número de película para ver: ")
                 try:
                     usuario.addAVisto(peliculas[numero-1].titulo)
                 except IndexError:
@@ -231,8 +236,7 @@ class Util():
             
             elif opcion == 6:
                 Util.mostrarLista("Las películas disponibles son: ", peliculas)
-                print ("Introduzca el número de película para añadir a pendientes: ")
-                numero = Util.leerEntero()
+                numero = Util.leerEntero("Introduzca el número de película para añadir a pendientes: ")
                 try:
                     usuario.addAPendienteVer(peliculas[numero-1].titulo)
                 except IndexError:
