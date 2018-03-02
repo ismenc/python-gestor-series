@@ -65,9 +65,4 @@ class Usuario:
         else:
             print ("Las películas y series que "+ self.nombre+ " tiene pendientes son: \n* " + "\n* ".join(self.pendienteVer))
             
-            
-    def __del__(self):
-        print("Usuario desconectado")
-        self.visto = []
-        self.pendienteVer = []
 
