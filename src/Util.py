@@ -4,6 +4,8 @@ import modelo.Usuario as U
 import modelo.Pelicula as P
 import modelo.Serie as S
 import csv
+import pickle
+
 
 '''
     Clase auxiliar que provee a nuestra aplicación de las funciones necesarias.
@@ -287,7 +289,7 @@ class Util():
                 print ("Hasta pronto :D")
                 sesion_activa = False
                 
-                archivo = open("datos/usuarios.txt", "r")
+                '''archivo = open("datos/usuarios.txt", "r")
                 linea = archivo.readline()
                 usuario_encontrado = False
                 while linea != "" and usuario_encontrado == False:
@@ -298,11 +300,11 @@ class Util():
                         linea = archivo.readline()
                 archivo.close()
                 
-                '''archivo = open("datos/usuarios.txt", "w+")
+                archivo = open("datos/usuarios.txt", "w+")
                 archivo.seek(indice)
                 writer = csv.writer(archivo, delimiter=',')
                 writer.writerows([usuario.visto, usuario.pendienteVer])
-                archivo.close()'''
+                archivo.close()
                 
                 bottle_list = []
 
@@ -318,7 +320,14 @@ class Util():
                     writer = csv.writer(b)
                     for line, row in enumerate(bottle_list):
                          data = line_to_override.get(line, row)
-                         writer.writerow(data)
+                         writer.writerow(data)'''
+                
+                import pickle
+                afile = open('datos/usuarios.txt', 'wb')
+                pickle.dump([usuario.nombre, usuario.clave, str(usuario.edad)], afile)
+                pickle.dump(usuario.visto, afile)
+                pickle.dump(usuario.pendienteVer, afile)
+                afile.close()
                     
                 
             else:
