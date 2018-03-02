@@ -18,6 +18,8 @@ class Usuario:
         self.nombre = nombre
         self.clave = clave
         self.edad = edad
+        self.visto = []
+        self.pendienteVer = []
         
         
     ''' Métodos para añadir a las listas '''
@@ -29,7 +31,7 @@ class Usuario:
             # Elminamos de pendiente si la hemos visto
             if serieOPelicula in self.pendienteVer:
                 self.pendienteVer.remove(serieOPelicula)
-                print("Se ha añadido a visto correctamente.")
+                
         else:
             print(serieOPelicula + " ya se encontraba en visto.")
 
@@ -39,7 +41,6 @@ class Usuario:
             # Validamos que no esté ya en pendiente
             if serieOPelicula not in self.pendienteVer:
                 self.pendienteVer.append(serieOPelicula)
-                print("Se ha añadido a pendientes correctamente.")
             else:
                 print(serieOPelicula + " ya se encontraba en pendientes.")
         else:
@@ -64,7 +65,7 @@ class Usuario:
             
             
     def __del__(self):
-        print "Usuario desconectado"
+        print("Usuario desconectado")
         self.visto = []
         self.pendienteVer = []
 

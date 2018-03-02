@@ -75,7 +75,7 @@ class Util():
 
     ''' Nos permite logearnos si el usuario está en la base de datos o lo registra si no está. '''
     @staticmethod
-    def logear(user, password):
+    def logear(user, password, usuarios):
         archivo = open("datos/usuarios.txt", "r+")
 
         linea = archivo.readline()
@@ -87,7 +87,13 @@ class Util():
                     print ("Logueado correctamente")
                     usuario_encontrado = True
                     datos = linea.split(',')
-                    usuario = U.Usuario(datos[0], datos[1], int(datos[2]))
+                    if(user not in usuarios):
+                        usuario = U.Usuario(datos[0], datos[1], int(datos[2]))
+                        usuarios[user] = usuario
+                    else:
+                        usuario = usuarios[user]
+                    
+                    
                 else:
                     linea = archivo.readline()
     
@@ -106,6 +112,8 @@ class Util():
             user = Util.solicitarCadena("Login:\nIntroduce el nombre de usuario registrado: ")
             password = Util.solicitarCadena("Introduce la contraseña: ")
             usuario = Util.logear(user, password)
+            
+        
             
         return usuario
     
@@ -215,6 +223,7 @@ class Util():
                 numero = Util.leerEntero("Introduzca el número de serie para ver: ")
                 try:
                     usuario.addAVisto(series[numero-1].titulo)
+                    print("Se ha visto la serie "+ series[numero-1].titulo)
                 except IndexError:
                     print("Error. Debe seleccionar una serie de la lista.")
             
@@ -223,6 +232,7 @@ class Util():
                 numero = Util.leerEntero("Introduzca el número de serie para añadir a pendientes: ")
                 try:
                     usuario.addAPendienteVer(series[numero-1].titulo)
+                    print("Se ha añadido a pendientes la serie "+ series[numero-1].titulo)
                 except IndexError:
                     print("Error. Debe seleccionar una serie de la lista.")
                 
@@ -231,6 +241,7 @@ class Util():
                 numero = Util.leerEntero("Introduzca el número de película para ver: ")
                 try:
                     usuario.addAVisto(peliculas[numero-1].titulo)
+                    print("Se ha visto la película "+ peliculas[numero-1].titulo)
                 except IndexError:
                     print("Error. Debe seleccionar una película de la lista.")
             
@@ -239,6 +250,7 @@ class Util():
                 numero = Util.leerEntero("Introduzca el número de película para añadir a pendientes: ")
                 try:
                     usuario.addAPendienteVer(peliculas[numero-1].titulo)
+                    print("Se ha añadido a pendientes la película "+ peliculas[numero-1].titulo)
                 except IndexError:
                     print("Error. Debe seleccionar una película de la lista.")
             

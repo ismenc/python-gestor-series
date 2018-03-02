@@ -15,6 +15,10 @@ from modelo.Usuario import Usuario
 
 ''' -------------- Programa principal -------------- '''
 
+usuarios = {}
+pelis = Util.cargarCatalogoPeliculas()
+series = Util.cargarCatalogoSeries()
+	
 on = True
 while on:
 	#Llamada a la funcion para solicitar los datos
@@ -22,10 +26,8 @@ while on:
 	password = Util.solicitarCadena("Introduce la contraseña: ")
 	
 	# Hacemos el login de usuario y cargamos los elementos necesarios
-	usuario = Util.logear(user, password)
-	pelis = Util.cargarCatalogoPeliculas()
-	series = Util.cargarCatalogoSeries()
-	
+	usuario = Util.logear(user, password, usuarios)
+		
 	sesion_activa = True
 	while sesion_activa == True:
 		# Mostramos el menú con las opciones https://github.com/ismenc/python-gestor-series/blob/master/doc/enunciado-practica.pdf
