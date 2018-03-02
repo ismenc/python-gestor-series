@@ -10,16 +10,23 @@ class Usuario:
     edad = 0
     visto = []
     pendienteVer = []
-
-    def __init__(self, nombre, clave, edad):
+        
+        
+    def __init__(self, nombre, clave, edad, visto, pendiente):
         if(edad < 16 or edad > 90):
             raise ValueError("Edad no válida")
         
         self.nombre = nombre
         self.clave = clave
         self.edad = edad
-        self.visto = []
-        self.pendienteVer = []
+        if(visto == None):
+            self.visto = []
+        else:
+            self.visto = visto
+        if(pendiente == None):
+            self.pendienteVer = []
+        else:
+            self.pendienteVer = pendiente
         
         
     ''' Métodos para añadir a las listas '''

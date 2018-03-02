@@ -3,6 +3,7 @@
 import modelo.Usuario as U
 import modelo.Pelicula as P
 import modelo.Serie as S
+import csv
 
 '''
     Clase auxiliar que provee a nuestra aplicación de las funciones necesarias.
@@ -62,14 +63,17 @@ class Util():
     def registrarUsuario(user, password, edad):
         ''' Registra a un usuario en la base de datos '''
         
-        usuario = U.Usuario(user, password, edad)
+        usuario = U.Usuario(user, password, edad, None, None)
         archivo = open("datos/usuarios.txt", "a")
         
         print ("Procedemos a registrar un nuevo usuario.\nUsuario registrado correctamente.")
         archivo.write("\n" + user + "," + password +","+ str(edad))
+        archivo.write(" ")
+        archivo.write(" ")
         archivo.close()
         
         return usuario
+    
     
     
 
@@ -91,7 +95,13 @@ class Util():
                     datos = linea.split(',')
                     # Este bloque comprueba si el usuario está en la lista de sesiones recientes
                     if(user not in usuarios):
-                        usuario = U.Usuario(datos[0], datos[1], int(datos[2]))
+                        vistos = archivo.readline().split(',')
+                        if(len(vistos) < 2):
+                            vistos = None
+                        pendientes = archivo.readline().split(',')
+                        if(len(pendientes) < 2):
+                            pendientes = None
+                        usuario = U.Usuario(datos[0], datos[1], int(datos[2]), vistos, pendientes)
                         usuarios[user] = usuario
                     else:
                         usuario = usuarios[user]
@@ -277,8 +287,40 @@ class Util():
                 print ("Hasta pronto :D")
                 sesion_activa = False
                 
+                archivo = open("datos/usuarios.txt", "r")
+                linea = archivo.readline()
+                usuario_encontrado = False
+                while linea != "" and usuario_encontrado == False:
+                    if linea.find(usuario.nombre + "," + usuario.clave + "," + str(usuario.edad)) == 0:
+                        usuario_encontrado = True
+                        indice = archivo.tell()
+                    else:
+                        linea = archivo.readline()
+                archivo.close()
                 
-            
+                '''archivo = open("datos/usuarios.txt", "w+")
+                archivo.seek(indice)
+                writer = csv.writer(archivo, delimiter=',')
+                writer.writerows([usuario.visto, usuario.pendienteVer])
+                archivo.close()'''
+                
+                bottle_list = []
+
+                # Read all data from the csv file.
+                with open('datos/usuarios.txt', 'rb') as b:
+                    bottles = csv.reader(b)
+                    bottle_list.extend(bottles)
+                
+                line_to_override = {numero:usuario.visto, numero+1:usuario.pendienteVer}
+                
+                # Write data to the csv file and replace the lines in the line_to_override dict.
+                with open('datos/usuarios.txt', 'wb') as b:
+                    writer = csv.writer(b)
+                    for line, row in enumerate(bottle_list):
+                         data = line_to_override.get(line, row)
+                         writer.writerow(data)
+                    
+                
             else:
                 print ("\n\tError. Debes elegir una opción correcta.")
                 opcion = 0
