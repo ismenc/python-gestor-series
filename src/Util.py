@@ -82,20 +82,22 @@ class Util():
         usuario_encontrado = False
 
         try:
+            # Buscamos al usuario en la base de datos.
             while linea != "" and usuario_encontrado == False:
+                
                 if linea.find(user + "," + password) == 0:
                     print ("Logueado correctamente")
                     usuario_encontrado = True
                     datos = linea.split(',')
+                    # Este bloque comprueba si el usuario está en la lista de sesiones recientes
                     if(user not in usuarios):
                         usuario = U.Usuario(datos[0], datos[1], int(datos[2]))
                         usuarios[user] = usuario
                     else:
                         usuario = usuarios[user]
-                    
-                    
                 else:
                     linea = archivo.readline()
+    
     
             if usuario_encontrado == False:
                 respuesta = Util.preguntarSiNo("Usuario no registrado. ¿Desea registrar el nuevo usuario? (si/no)")
@@ -107,13 +109,12 @@ class Util():
                     user = Util.solicitarCadena("Introduce el nombre de usuario registrado: ")
                     password = Util.solicitarCadena("Introduce la contraseña: ")
                     usuario = Util.logear(user, password)
+        # Comprobación de errores
         except ValueError as error:
             print("Error registrando a usuario: " + str(error))
             user = Util.solicitarCadena("Login:\nIntroduce el nombre de usuario registrado: ")
             password = Util.solicitarCadena("Introduce la contraseña: ")
             usuario = Util.logear(user, password)
-            
-        
             
         return usuario
     
@@ -212,11 +213,16 @@ class Util():
             Util.mostrar_menu()
             opcion = Util.leerEntero("Introduce el número de la opcion elegida: ")
             
+            
             if opcion == 1:
                 Util.mostrarLista("Las películas disponibles son: ", peliculas)
                 
+                
+                
             elif opcion == 2:
                 Util.mostrarLista("Las series disponibles son: ", series)
+                
+                
                 
             elif opcion == 3:
                 Util.mostrarLista("Las series disponibles son: ", series)
@@ -226,6 +232,8 @@ class Util():
                     print("Se ha visto la serie "+ series[numero-1].titulo)
                 except IndexError:
                     print("Error. Debe seleccionar una serie de la lista.")
+                    
+                    
             
             elif opcion == 4:
                 Util.mostrarLista("Las series disponibles son: ", series)
@@ -235,6 +243,8 @@ class Util():
                     print("Se ha añadido a pendientes la serie "+ series[numero-1].titulo)
                 except IndexError:
                     print("Error. Debe seleccionar una serie de la lista.")
+                    
+                    
                 
             elif opcion == 5:
                 Util.mostrarLista("Las películas disponibles son: ", peliculas)
@@ -244,6 +254,8 @@ class Util():
                     print("Se ha visto la película "+ peliculas[numero-1].titulo)
                 except IndexError:
                     print("Error. Debe seleccionar una película de la lista.")
+                    
+                    
             
             elif opcion == 6:
                 Util.mostrarLista("Las películas disponibles son: ", peliculas)
@@ -253,20 +265,28 @@ class Util():
                     print("Se ha añadido a pendientes la película "+ peliculas[numero-1].titulo)
                 except IndexError:
                     print("Error. Debe seleccionar una película de la lista.")
+                    
+                    
             
             elif opcion == 7:
                 usuario.verVisto()
+                
+                
         
             elif opcion == 8:
                 usuario.verPendientes()
                 
+                
             elif opcion == 9:
                 print ("Hasta pronto :D")
                 sesion_activa = False
+                
+                
             
             else:
                 print ("\n\tError. Debes elegir una opción correcta.")
                 opcion = 0
+                
         
         return sesion_activa
     

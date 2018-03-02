@@ -15,13 +15,13 @@ from modelo.Usuario import Usuario
 
 ''' -------------- Programa principal -------------- '''
 
+# Diccionario dónde almacenamos los usuarios que han estado activos para acceder a ellos de nuevo
 usuarios = {}
 pelis = Util.cargarCatalogoPeliculas()
 series = Util.cargarCatalogoSeries()
 	
 on = True
 while on:
-	#Llamada a la funcion para solicitar los datos
 	user = Util.solicitarCadena("Introduce el nombre de usuario: ")
 	password = Util.solicitarCadena("Introduce la contraseña: ")
 	
