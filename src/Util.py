@@ -16,9 +16,9 @@ class Util():
     @staticmethod
     def solicitarCadena(msg):
         print(msg)
-        cadena = input()
+        cadena = raw_input()
         
-        if(len(cadena) < 2):
+        if(len(str(cadena)) < 2):
             cadena = Util.solicitarCadena("Entrada no válida. "+msg)
         
         return cadena
@@ -31,7 +31,7 @@ class Util():
         print(msg)
         
         try:
-            numero = input()
+            numero = raw_input()
             valor = int(numero)
         except NameError:
             print ("Debes introducir un número entero positivo. Intenta de nuevo, tu puedes!")
@@ -63,11 +63,11 @@ class Util():
         ''' Registra a un usuario en la base de datos '''
         
         usuario = U.Usuario(user, password, edad)
-        archivo = open("datos/usuarios.txt", "r+")
-        linea = archivo.readline()
+        archivo = open("datos/usuarios.txt", "a")
         
         print ("Procedemos a registrar un nuevo usuario.\nUsuario registrado correctamente.")
         archivo.write("\n" + user + "," + password +","+ str(edad))
+        archivo.close()
         
         return usuario
     
@@ -87,7 +87,7 @@ class Util():
                     print ("Logueado correctamente")
                     usuario_encontrado = True
                     datos = linea.split(',')
-                    usuario = U.Usuario(datos[0], datos[1], datos[2])
+                    usuario = U.Usuario(datos[0], datos[1], int(datos[2]))
                 else:
                     linea = archivo.readline()
     
