@@ -1,7 +1,3 @@
 usuario,usuario,55
 ss,ss,33
 isma,isma,43
-manolo,manolo,50
-man,man,16
-manolo2,manolo2,54
-11,11,33

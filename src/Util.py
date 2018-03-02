@@ -108,13 +108,13 @@ class Util():
                 else:
                     user = Util.solicitarCadena("Introduce el nombre de usuario registrado: ")
                     password = Util.solicitarCadena("Introduce la contraseña: ")
-                    usuario = Util.logear(user, password)
+                    usuario = Util.logear(user, password, usuarios)
         # Comprobación de errores
         except ValueError as error:
             print("Error registrando a usuario: " + str(error))
             user = Util.solicitarCadena("Login:\nIntroduce el nombre de usuario registrado: ")
             password = Util.solicitarCadena("Introduce la contraseña: ")
-            usuario = Util.logear(user, password)
+            usuario = Util.logear(user, password, usuarios)
             
         return usuario
     
@@ -229,7 +229,6 @@ class Util():
                 numero = Util.leerEntero("Introduzca el número de serie para ver: ")
                 try:
                     usuario.addAVisto(series[numero-1].titulo)
-                    print("Se ha visto la serie "+ series[numero-1].titulo)
                 except IndexError:
                     print("Error. Debe seleccionar una serie de la lista.")
                     
@@ -240,7 +239,6 @@ class Util():
                 numero = Util.leerEntero("Introduzca el número de serie para añadir a pendientes: ")
                 try:
                     usuario.addAPendienteVer(series[numero-1].titulo)
-                    print("Se ha añadido a pendientes la serie "+ series[numero-1].titulo)
                 except IndexError:
                     print("Error. Debe seleccionar una serie de la lista.")
                     
@@ -251,7 +249,6 @@ class Util():
                 numero = Util.leerEntero("Introduzca el número de película para ver: ")
                 try:
                     usuario.addAVisto(peliculas[numero-1].titulo)
-                    print("Se ha visto la película "+ peliculas[numero-1].titulo)
                 except IndexError:
                     print("Error. Debe seleccionar una película de la lista.")
                     
@@ -262,7 +259,6 @@ class Util():
                 numero = Util.leerEntero("Introduzca el número de película para añadir a pendientes: ")
                 try:
                     usuario.addAPendienteVer(peliculas[numero-1].titulo)
-                    print("Se ha añadido a pendientes la película "+ peliculas[numero-1].titulo)
                 except IndexError:
                     print("Error. Debe seleccionar una película de la lista.")
                     

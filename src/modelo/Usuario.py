@@ -28,6 +28,7 @@ class Usuario:
         # Validamos que no esté ya en visto
         if serieOPelicula not in self.visto:
             self.visto.append(serieOPelicula)
+            print("Se ha visto "+ serieOPelicula)
             # Elminamos de pendiente si la hemos visto
             if serieOPelicula in self.pendienteVer:
                 self.pendienteVer.remove(serieOPelicula)
@@ -41,6 +42,7 @@ class Usuario:
             # Validamos que no esté ya en pendiente
             if serieOPelicula not in self.pendienteVer:
                 self.pendienteVer.append(serieOPelicula)
+                print("Se ha añadido "+ serieOPelicula +" a pendientes.")
             else:
                 print(serieOPelicula + " ya se encontraba en pendientes.")
         else:
